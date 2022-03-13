@@ -8,11 +8,11 @@
 
 
 
-#ifndef WL_NO_SHORT_NAMES
+#if !WL_PREFIX
 #	define Sl		wl_Sl
 #	define sl		wl_sl
 
-#	ifndef WL_NO_ALIASES
+#	if WL_ALIASES
 #		define Lens			wl_Lens
 #		define Strlen		wl_Strlen
 #		define StringLength	wl_StringLength
@@ -23,7 +23,7 @@
 
 #endif
 
-#ifndef WL_NO_ALIASES
+#if WL_ALIASES
 #	define wl_Lens			wl_Sl
 #	define wl_Strlen		wl_Sl
 #	define wl_StringLength	wl_Sl

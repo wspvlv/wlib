@@ -27,7 +27,7 @@
  *     |_|  |_|  \__,_|  \___| |_|     \___/  |___/
  *                                                 
  */
-#ifndef WL_NO_SHORT_NAMES
+#if !WL_PREFIX
 #	define I8	wl_I8
 #	define I16	wl_I16
 #	define I32	wl_I32
@@ -134,6 +134,9 @@
 #	endif
 #	ifndef TRUE
 #		define TRUE WL_TRUE
+#	endif
+#	ifndef NULL
+#		define NULL WL_NULL
 #	endif
 #endif
 
@@ -593,11 +596,15 @@
 
 /* [TRUE] */
 #ifndef WL_TRUE
-#	define WL_TRUE
+#	define WL_TRUE	1
 #endif
 /* [FALSE] */
 #ifndef WL_FALSE
-#	define WL_FALSE
+#	define WL_FALSE	0
+#endif
+/* [NULL] */
+#ifndef WL_NULL
+#	define WL_NULL	((void*)0)
 #endif
 
 

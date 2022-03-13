@@ -6,10 +6,13 @@
                 "${default}",
                 "inc"
             ],
-            "compilerPath": "/usr/bin/clang",
+            "compilerPath": "/usr/bin/gcc",
             "cStandard": "c17",
             "cppStandard": "c++14",
-            "intelliSenseMode": "linux-clang-x64"
+            "intelliSenseMode": "linux-gcc-x64",
+            "compilerArgs": [
+                "-include inc/wc/config.h"
+            ]
         }
     ],
     "version": 4

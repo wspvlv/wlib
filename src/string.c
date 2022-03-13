@@ -3,14 +3,14 @@
 
 
 #if UMB>=64
-/* Value of `UMax`, where all indiviual bytes are `0x01` */
+/* Value of `UMax`, where all individual bytes are `0x01` */
 #	define _LOW		0x0101010101010101
-/* Value of `UMax`, where all indiviual bytes are `0x80` */
+/* Value of `UMax`, where all individual bytes are `0x80` */
 #	define _HIGH	0x8080808080808080
 #else
-/* Value of `UMax`, where all indiviual bytes are `0x01` */
+/* Value of `UMax`, where all individual bytes are `0x01` */
 #	define _LOW		0x01010101
-/* Value of `UMax`, where all indiviual bytes are `0x08` */
+/* Value of `UMax`, where all individual bytes are `0x08` */
 #	define _HIGH	0x80808080
 #endif
 /* Whether there's a byte that has a value of `0x00` */
@@ -24,7 +24,7 @@
  * \return	Sl
  */
 Sl sl(const char* restrict const s) {
-		/* 1. Creates a varible which will store the pointer to a character of 
+		/* 1. Creates a variable which will store the pointer to a character of 
 		* string `s`. The parameter `s` is preserved, in order to calculate
 		* the difference in bytes between `s` and `a` at return point.
 		*/
@@ -33,21 +33,21 @@ Sl sl(const char* restrict const s) {
 #	ifndef WL_SL_SIMPLE
 		/* 2. Check, whether pointer `a` is 4-byte (in x86) or 8-byte (in x86-64)
 		* aligned, if not, check the character `a` points to for a NUL character
-		* if it's NUL, return `a`-`s`, otherwise, incriment `a` and repeat this
+		* if it's NUL, return `a`-`s`, otherwise, increment `a` and repeat this
 		* step until `a` is aligned.
 		*/
-		for (; (Pt)a % sizeof(UMB); a++)
+		for (; (Pt)a % sizeof(UMB); a++) if (!a) return a-s;
 
 		/* 3. Now that `a` is aligned. We check the value of the size of alignment
-		* for the presence of a byte that has a NUL chacaracter. If there isn't
-		* one, incriment `a` to the next alignment, if there is one or more, go
+		* for the presence of a byte that has a NUL character. If there isn't
+		* one, increment `a` to the next alignment, if there is one or more, go
 		* to the next step.
 		*/
 		for (; !_HASZERO(*(UMax*)a); a += sizeof(UMB)) {}; /* Braces here to 
-		supress "this ‘for’ clause does not guard..." */
+		suppress "this ‘for’ clause does not guard..." */
 
 
-		/* 4. Now we do now that, that there is a NUL character somewhere in this
+		/* 4. Now we do know that, that there is a NUL character somewhere in this
 		* alignment, check each character, if it's NUL, return there difference
 		* between `s` and `a` &mdash; this is our string length.
 		*/

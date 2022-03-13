@@ -11,7 +11,7 @@
  *     |_|  |_|  \__,_|  \___| |_|     \___/  |___/
  *                                                 
  */
-#ifndef WL_NO_SHORT_NAMES
+#if !WL_PREFIX
 #	define NUL		WL_NUL
 #	define SOH		WL_SOH
 #	define STX		WL_STX
